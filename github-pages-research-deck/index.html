@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Research presentation on Sentiment Analysis by Najla Saad Almotiri.">
+    <title>Sentiment Analysis - Najla Saad Almotiri</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="deck-shell">
+      <header class="deck-topbar" aria-label="Presentation controls">
+        <div class="identity">
+          <strong>Najla Saad Almotiri</strong>
+          <span>Student ID: 202604229</span>
+        </div>
+        <div class="progress-wrap" aria-hidden="true">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <div class="controls">
+          <button id="prevBtn" class="icon-btn" type="button" aria-label="Previous slide" title="Previous slide">&lsaquo;</button>
+          <span id="slideCounter" class="counter">1 / 14</span>
+          <button id="nextBtn" class="icon-btn" type="button" aria-label="Next slide" title="Next slide">&rsaquo;</button>
+          <button id="notesBtn" class="notes-toggle" type="button" aria-pressed="false">Notes</button>
+        </div>
+      </header>
+
+      <main class="slides" id="slides" aria-live="polite">
+        <section class="slide content-slide hook-slide is-active" data-title="The Hollywood Producer's Dilemma">
+          <div class="hook-stage">
+            <div class="hook-copy">
+              <p class="eyebrow">Opening case</p>
+              <h1>The Hollywood Producer's Dilemma</h1>
+              <p>A blockbuster opens Friday night. By morning, <strong>50,000 reviews</strong> are online.</p>
+              <div class="hook-question">How can the studio know the audience mood now?</div>
+            </div>
+            <div class="translation-visual" aria-label="Reviews translated into machine sentiment representation">
+              <div class="language-panel">
+                <span>Human Language</span>
+                <p>"The film was breathtaking, but the ending felt rushed."</p>
+                <div class="parse-lines" aria-hidden="true">
+                  <i></i><i></i><i></i><i></i>
+                </div>
+              </div>
+              <div class="light-stream" aria-hidden="true">
+                <i></i><i></i><i></i><i></i><i></i>
+              </div>
+              <div class="matrix-panel">
+                <span>Machine Representation</span>
+                <div class="matrix-grid" aria-hidden="true">
+                  <b>0.045</b><b>0.011</b><b>0.038</b><b>0.078</b><b>0.065</b>
+                  <b>0.078</b><b>0.092</b><b>0.148</b><b>0.305</b><b>0.018</b>
+                  <b>0.047</b><b class="warm">0.685</b><b class="warm">0.807</b><b>0.635</b><b>0.736</b>
+                  <b>0.857</b><b class="hot">0.915</b><b class="word">rush</b><b class="hot">0.784</b><b>0.742</b>
+                  <b>0.042</b><b>0.072</b><b>0.907</b><b>0.981</b><b>0.212</b>
+                </div>
+                <div class="sentiment-result">
+                  <strong>Sentiment map</strong>
+                  <small>positive + mixed concern</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <aside class="notes">
+            Imagine you are a Hollywood producer who just released a major film on Friday night. By Saturday morning, over 50,000 reviews have been posted across IMDb, Twitter, and movie blogs. Reading through every single review manually would take weeks. How do you know - right now - if the audience loved it or hated it?
+
+            This is where Sentiment Analysis comes in. Behind every online review, tweet, or rating is a human emotion. Sentiment analysis uses Natural Language Processing, or NLP, to allow computers to read thousands of text reviews, decipher the underlying sentiment, and instantly give decision-makers a clear picture of public emotion.
+          </aside>
+        </section>
+
+        <section class="slide gradient-slide title-slide" data-title="Sentiment Analysis">
+          <div class="gradient-content">
+            <p class="section-label">Research presentation</p>
+            <h1>Sentiment Analysis</h1>
+            <p class="subtitle">How computers transform language, opinion, and emotion into interpretable evidence.</p>
+            <div class="title-meta">
+              <span>Presenter: Najla Saad Almotiri</span>
+              <span>Student ID: 202604229</span>
+            </div>
+          </div>
+          <div class="stack-visual" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <aside class="notes">
+            This presentation introduces sentiment analysis for a linguistics MA audience. The focus is not only on computer science, but on the linguistic question underneath it: how can a machine infer stance, evaluation, and emotion from text?
+          </aside>
+        </section>
+
+        <section class="slide content-slide" data-title="Definition and Introduction">
+          <div class="slide-grid two-col">
+            <div class="copy-panel">
+              <p class="eyebrow">Definition and introduction</p>
+              <h2>What Is Sentiment Analysis?</h2>
+              <p class="lede">Sentiment analysis is an NLP task that identifies the evaluative attitude expressed in text.</p>
+              <div class="definition-box">
+                <strong>Working definition:</strong>
+                <span>A computational method for classifying language according to polarity, such as positive, negative, or neutral, and sometimes finer emotions such as joy, anger, sadness, or trust.</span>
+              </div>
+              <ul>
+                <li>It treats reviews, tweets, comments, and survey answers as language data.</li>
+                <li>It asks what stance the writer takes toward a topic, product, event, person, or idea.</li>
+                <li>It combines linguistic interpretation with statistical pattern recognition.</li>
+              </ul>
+            </div>
+            <figure class="image-frame">
+              <img src="assets/slide-media/emotion-prism.png" alt="A prism translating one review into positive and negative sentiment signals.">
+            </figure>
+          </div>
+          <aside class="notes">
+            Start with the simplest definition: sentiment analysis is about recognizing attitude in language. For linguistics students, this connects to appraisal, stance, polarity, affect, and evaluation. The computational side adds a practical question: how can these meanings be represented in a way that a machine can process?
+          </aside>
+        </section>
+
+        <section class="slide content-slide" data-title="Significance">
+          <div class="slide-grid two-col">
+            <div class="copy-panel">
+              <p class="eyebrow">Significance</p>
+              <h2>Why It Matters</h2>
+              <p class="lede">People now express opinions at a scale no human team can read closely in real time.</p>
+              <div class="stat-row">
+                <div><strong>Scale</strong><span>Thousands or millions of short texts</span></div>
+                <div><strong>Speed</strong><span>Fast public reaction after events</span></div>
+                <div><strong>Decision value</strong><span>Evidence for action</span></div>
+              </div>
+              <ul>
+                <li><strong>Business:</strong> customer satisfaction, product feedback, brand reputation.</li>
+                <li><strong>Media:</strong> audience reaction to films, campaigns, and public events.</li>
+                <li><strong>Politics:</strong> public opinion, policy reception, and debate monitoring.</li>
+                <li><strong>Research:</strong> corpus-scale patterns of stance and evaluative language.</li>
+              </ul>
+            </div>
+            <figure class="image-frame">
+              <img src="assets/slide-media/society-pillars.png" alt="Three columns showing business intelligence, financial forecasting, and political polling.">
+            </figure>
+          </div>
+          <aside class="notes">
+            The significance is not that sentiment analysis replaces human interpretation. Instead, it helps researchers and decision-makers locate patterns at scale. A linguist may still analyze nuance deeply, but sentiment analysis can point to where the major public reactions are forming.
+          </aside>
+        </section>
+
+        <section class="slide gradient-slide divider-slide" data-title="From Language to Data">
+          <div class="gradient-content narrow">
+            <p class="section-label">Section 1</p>
+            <h2>From Language to Data</h2>
+            <p class="subtitle">The central problem: human meaning is continuous and contextual, while machine learning needs structured numerical input.</p>
+          </div>
+          <div class="stack-visual soft" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <aside class="notes">
+            Now we move from the social motivation to the technical challenge. The key idea is translation: not translation between languages, but translation from human language into numerical features.
+          </aside>
+        </section>
+
+        <section class="slide content-slide" data-title="Human Reader vs Machine Reader">
+          <div class="slide-grid two-col">
+            <div class="copy-panel">
+              <p class="eyebrow">The linguistic challenge</p>
+              <h2>Humans Read Context. Machines Need Representation.</h2>
+              <p class="lede">A human reader notices sarcasm, tone, intensifiers, negation, and context. A basic algorithm sees strings until we convert them.</p>
+              <table class="compare-table">
+                <thead>
+                  <tr><th>Human reader</th><th>Machine reader</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Interprets syntax and discourse</td><td>Receives tokens and numbers</td></tr>
+                  <tr><td>Understands pragmatic cues</td><td>Uses learned statistical patterns</td></tr>
+                  <tr><td>Can infer implied meaning</td><td>Needs examples, labels, and features</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <figure class="image-frame">
+              <img src="assets/slide-media/human-vs-machine.png" alt="A diagnostic comparison between a human linguist and an NLP algorithm.">
+            </figure>
+          </div>
+          <aside class="notes">
+            This slide gives students permission not to know the computer science yet. The difference is simple: humans naturally process meaning, while machines need a representation. Sentiment analysis begins by deciding what aspects of text are useful as evidence.
+          </aside>
+        </section>
+
+        <section class="slide content-slide" data-title="IMDb Benchmark Dataset">
+          <div class="slide-grid two-col">
+            <div class="copy-panel">
+              <p class="eyebrow">Research corpus</p>
+              <h2>The IMDb Movie Review Benchmark</h2>
+              <p class="lede">A classic teaching example uses 50,000 real movie reviews labeled as positive or negative.</p>
+              <ul>
+                <li><strong>25,000 training reviews:</strong> examples the model learns from.</li>
+                <li><strong>25,000 test reviews:</strong> unseen examples used to check performance.</li>
+                <li><strong>Binary labels:</strong> positive or negative sentiment.</li>
+                <li><strong>Why it helps:</strong> movie reviews contain rich evaluative language, not only ratings.</li>
+              </ul>
+            </div>
+            <figure class="image-frame">
+              <img src="assets/slide-media/imdb-benchmark.png" alt="A diagram of the IMDb benchmark split into train and test folders with positive and negative labels.">
+            </figure>
+          </div>
+          <aside class="notes">
+            The IMDb dataset keeps the Hollywood scenario concrete. It is useful because it gives us many authentic reviews and a clear label for each review. In machine learning, the training set is like guided practice; the test set is the exam.
+          </aside>
+        </section>
+
+        <section class="slide gradient-slide divider-slide" data-title="Weighting Meaning">
+          <div class="gradient-content narrow">
+            <p class="section-label">Section 2</p>
+            <h2>Three Techniques, One Flow</h2>
+            <p class="subtitle">BoW counts words. TF-IDF fixes noisy counts. LSA moves from separate words toward hidden topics and meaning.</p>
+          </div>
+          <div class="stack-visual soft" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <aside class="notes">
+            The next three techniques form a sequence. BoW counts. TF-IDF improves the counts by weighting distinctive words. LSA then asks whether different words may belong to the same hidden topic.
+          </aside>
+        </section>
+
+        <section class="slide content-slide" data-title="Bag of Words">
+          <div class="bow-stage">
+            <div class="bow-copy">
+              <p class="eyebrow">Technique 1</p>
+              <h2>Bag-of-Words</h2>
+              <p class="lede">Documents are broken into tokens; the tokens drop into one vocabulary bag, where order becomes less important than counts.</p>
+              <button class="replay-btn" type="button" data-replay-bow>Replay transfer</button>
+            </div>
+            <div class="bow-visual" aria-label="Words moving from documents into a Bag-of-Words">
+              <div class="doc-pile">
+                <article>
+                  <strong>Review A</strong>
+                  <p>The sun is shining</p>
+                </article>
+                <article>
+                  <strong>Review B</strong>
+                  <p>The weather is sweet</p>
+                </article>
+                <article>
+                  <strong>Review C</strong>
+                  <p>The story is moving</p>
+                </article>
+              </div>
+              <div class="flying-words" aria-hidden="true">
+                <span style="--x: 0px; --y: 0px; --delay: 0s;">the</span>
+                <span style="--x: 42px; --y: 45px; --delay: .35s;">sun</span>
+                <span style="--x: -35px; --y: 82px; --delay: .7s;">is</span>
+                <span style="--x: 55px; --y: -28px; --delay: 1.05s;">sweet</span>
+                <span style="--x: -50px; --y: 18px; --delay: 1.4s;">moving</span>
+                <span style="--x: 15px; --y: 98px; --delay: 1.75s;">story</span>
+              </div>
+              <div class="word-bag">
+                <div class="bag-mouth"></div>
+                <div class="bag-body">
+                  <span>the</span>
+                  <span>is</span>
+                  <span>sun</span>
+                  <span>sweet</span>
+                  <span>story</span>
+                  <span>moving</span>
+                </div>
+              </div>
+              <div class="count-vector">
+                <span>the: 3</span>
+                <span>is: 3</span>
+                <span>sweet: 1</span>
+                <span>moving: 1</span>
+              </div>
+            </div>
+          </div>
+          <aside class="notes">
+            The first technique is Bag-of-Words. It is the simplest way to make text numerical. It treats a text like a bag: we put the words inside, ignore grammar and order, and count how many times each word appears. If a word appears five times, its value is five. The limitation is that very common words can receive high numbers even when they carry little meaning.
+          </aside>
+        </section>
+
+        <section class="slide content-slide" data-title="Sparse Matrix">
+          <div class="slide-grid two-col">
+            <div class="copy-panel">
+              <p class="eyebrow">Feature vectors</p>
+              <h2>The Sparse Matrix</h2>
+              <p class="lede">BoW produces a large table of counts: documents as rows, vocabulary items as columns.</p>
+              <ul>
+                <li>Rows usually represent documents or reviews.</li>
+                <li>Columns represent vocabulary items.</li>
+                <li>Most cells are zero because each review uses only a small part of the vocabulary.</li>
+                <li><strong>Problem:</strong> common words can dominate the numbers even when they are not meaningful.</li>
+              </ul>
+            </div>
+            <figure class="image-frame">
+              <img src="assets/slide-media/sparse-matrix.png" alt="A sparse matrix showing documents as rows and word IDs as columns.">
+            </figure>
+          </div>
+          <aside class="notes">
+            Bag-of-Words gives us a matrix. This is useful, but it creates a problem: words that occur everywhere can look important just because they are frequent. This prepares the transition to TF-IDF.
+          </aside>
+        </section>
+
+        <section class="slide content-slide" data-title="TF-IDF">
+          <div class="tfidf-layout">
+            <div class="copy-panel tfidf-copy">
+              <p class="eyebrow">Technique 2</p>
+              <h2>TF-IDF</h2>
+              <p class="lede">TF-IDF solves BoW's biggest problem: common words are penalized, distinctive words are rewarded.</p>
+            </div>
+            <div class="tfidf-figure" data-tfidf-figure>
+              <img src="assets/slide-media/tfidf-scale.png" alt="A scale showing common movie words losing weight and rare sentiment words gaining weight.">
+              <div class="tfidf-glass">
+                <div class="term-display">
+                  <span id="termLabel">masterpiece</span>
+                  <strong id="weightLabel">High signal</strong>
+                </div>
+                <div class="weight-meter" aria-hidden="true">
+                  <span>common</span>
+                  <div><i id="weightNeedle"></i></div>
+                  <span>distinctive</span>
+                </div>
+                <div class="term-stats">
+                  <p><strong id="tfLabel">TF: 1</strong><span>inside this review</span></p>
+                  <p><strong id="idfLabel">IDF: 4.6</strong><span>rare across the corpus</span></p>
+                </div>
+              </div>
+              <div class="term-controls" aria-label="Choose a TF-IDF example term">
+                <button class="is-selected" type="button" data-term="masterpiece" data-weight="88" data-tf="TF: 1" data-idf="IDF: 4.6" data-label="High signal">masterpiece</button>
+                <button type="button" data-term="movie" data-weight="24" data-tf="TF: 8" data-idf="IDF: 0.22" data-label="Low signal">movie</button>
+                <button type="button" data-term="disappointing" data-weight="78" data-tf="TF: 1" data-idf="IDF: 3.9" data-label="Strong negative signal">disappointing</button>
+              </div>
+            </div>
+          </div>
+          <aside class="notes">
+            TF-IDF keeps the idea of word frequency, but it adds a second question: is this word rare across the wider collection? Common words such as "in", "from", or "movie" receive low weight because they appear everywhere. Distinctive words receive higher weight because they tell us more about the document.
+          </aside>
+        </section>
+
+        <section class="slide content-slide" data-title="Latent Semantic Analysis">
+          <div class="lsa-layout">
+            <div class="copy-panel">
+              <p class="eyebrow">LSA</p>
+              <h2>Latent Semantic Analysis</h2>
+              <p class="lede">LSA solves a shared limitation of BoW and TF-IDF: both can treat related words as separate signals.</p>
+              <div class="lsa-card">
+                <strong>Core idea</strong>
+                <span>Use SVD to reduce the TF-IDF matrix into fewer hidden dimensions called latent topics.</span>
+              </div>
+            </div>
+            <div class="lsa-visual" aria-label="Latent Semantic Analysis groups related words into hidden topics">
+              <div class="semantic-cloud">
+                <span class="health">doctor</span>
+                <span class="health">hospital</span>
+                <span class="health">medicine</span>
+                <span class="film">actor</span>
+                <span class="film">cinema</span>
+                <span class="film">screenplay</span>
+              </div>
+              <div class="svd-gate">SVD</div>
+              <div class="topic-output">
+                <article>
+                  <strong>Latent Topic 1</strong>
+                  <span>health care</span>
+                </article>
+                <article>
+                  <strong>Latent Topic 2</strong>
+                  <span>film experience</span>
+                </article>
+              </div>
+            </div>
+          </div>
+          <aside class="notes">
+            LSA comes after BoW and TF-IDF because it addresses meaning more directly. BoW and TF-IDF may not understand that "doctor", "hospital", and "medicine" are related. LSA takes the numerical matrix and uses a method called SVD to reduce thousands of word dimensions into a smaller set of hidden topics.
+          </aside>
+        </section>
+
+        <section class="slide content-slide" data-title="Linguistic Interpretation">
+          <div class="copy-panel wide">
+            <p class="eyebrow">For linguistics students</p>
+            <h2>What Sentiment Analysis Can and Cannot Hear</h2>
+            <div class="card-grid three">
+              <article class="mini-card positive-card">
+                <h3>It hears lexical cues</h3>
+                <p>Words such as excellent, awful, inspiring, boring, and disappointing can be strong polarity signals.</p>
+              </article>
+              <article class="mini-card cream-card">
+                <h3>It struggles with pragmatics</h3>
+                <p>Sarcasm, irony, indirect criticism, and cultural references often require context beyond word counts.</p>
+              </article>
+              <article class="mini-card negative-card">
+                <h3>It depends on domain</h3>
+                <p>"Unpredictable" may be positive for a thriller but negative for a delivery service.</p>
+              </article>
+            </div>
+            <div class="callout">
+              <strong>Key point:</strong> A sentiment model is not a neutral reader. It reflects the data, labels, language variety, and assumptions used to train it.
+            </div>
+          </div>
+          <aside class="notes">
+            This slide keeps the audience grounded in linguistic expertise. Sentiment analysis is powerful, but it does not automatically understand context in the human sense. This creates an important role for linguists in data design, annotation, error analysis, and interpretation.
+          </aside>
+        </section>
+
+        <section class="slide content-slide" data-title="Modern Techniques and Ethics">
+          <div class="copy-panel wide">
+            <p class="eyebrow">Beyond classical baselines</p>
+            <h2>Where the Field Goes Next</h2>
+            <div class="timeline">
+              <div>
+                <span>1</span>
+                <h3>Lexicon methods</h3>
+                <p>Use dictionaries of positive and negative words.</p>
+              </div>
+              <div>
+                <span>2</span>
+                <h3>Classical ML</h3>
+                <p>Use Bag-of-Words or TF-IDF with models such as logistic regression.</p>
+              </div>
+              <div>
+                <span>3</span>
+                <h3>Embeddings</h3>
+                <p>Represent words or sentences in dense numerical spaces.</p>
+              </div>
+              <div>
+                <span>4</span>
+                <h3>Transformers</h3>
+                <p>Use contextual language models that better handle meaning in context.</p>
+              </div>
+            </div>
+            <p class="ethics-note">Ethical questions remain: privacy, bias, dialect fairness, annotation quality, and whether public emotion should be measured without consent.</p>
+          </div>
+          <aside class="notes">
+            Present the progression without overwhelming the audience. The field has moved from simple dictionaries to machine learning and contextual models. But better models do not remove ethical questions. A model can still be biased if its data or labels are biased.
+          </aside>
+        </section>
+
+        <section class="slide gradient-slide closing-slide" data-title="Conclusion">
+          <div class="gradient-content">
+            <p class="section-label">Conclusion</p>
+            <h2>Sentiment Analysis Turns Public Language into Interpretable Signals</h2>
+            <div class="closing-grid">
+              <div><strong>1</strong><span>It classifies stance and polarity in text.</span></div>
+              <div><strong>2</strong><span>It converts language into numerical representations.</span></div>
+              <div><strong>3</strong><span>It supports decisions, but still needs human interpretation.</span></div>
+            </div>
+            <p class="subtitle">Thank you. Questions are welcome.</p>
+          </div>
+          <aside class="notes">
+            To summarize: sentiment analysis bridges the gap between human emotion and computational data. Whether it helps a movie producer evaluate opening-weekend feedback, a brand manage its reputation, or a researcher study public stance, it turns unstructured text into evidence. But the best use of sentiment analysis still requires critical human interpretation.
+          </aside>
+        </section>
+
+        
+      </main>
+
+      <aside class="speaker-notes" id="speakerNotes" aria-label="Speaker notes" hidden>
+        <div>
+          <strong id="notesTitle">Speaker Notes</strong>
+          <button id="closeNotesBtn" class="icon-btn" type="button" aria-label="Close notes" title="Close notes">&times;</button>
+        </div>
+        <p id="notesText"></p>
+      </aside>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
