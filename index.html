@@ -19,7 +19,7 @@
         </div>
         <div class="controls">
           <button id="prevBtn" class="icon-btn" type="button" aria-label="Previous slide" title="Previous slide">&lsaquo;</button>
-          <span id="slideCounter" class="counter">1 / 14</span>
+          <span id="slideCounter" class="counter">1 / 15</span>
           <button id="nextBtn" class="icon-btn" type="button" aria-label="Next slide" title="Next slide">&rsaquo;</button>
           <button id="notesBtn" class="notes-toggle" type="button" aria-pressed="false">Notes</button>
         </div>
@@ -183,7 +183,7 @@
             <div class="copy-panel">
               <p class="eyebrow">Research corpus</p>
               <h2>The IMDb Movie Review Benchmark</h2>
-              <p class="lede">A classic teaching example uses 50,000 real movie reviews labeled as positive or negative.</p>
+              <p class="lede">An example of 50,000 real movie reviews labeled as positive or negative.</p>
               <ul>
                 <li><strong>25,000 training reviews:</strong> examples the model learns from.</li>
                 <li><strong>25,000 test reviews:</strong> unseen examples used to check performance.</li>
@@ -238,22 +238,26 @@
                 </article>
               </div>
               <div class="flying-words" aria-hidden="true">
-                <span style="--x: 0px; --y: 0px; --delay: 0s;">the</span>
-                <span style="--x: 42px; --y: 45px; --delay: .35s;">sun</span>
-                <span style="--x: -35px; --y: 82px; --delay: .7s;">is</span>
-                <span style="--x: 55px; --y: -28px; --delay: 1.05s;">sweet</span>
-                <span style="--x: -50px; --y: 18px; --delay: 1.4s;">moving</span>
-                <span style="--x: 15px; --y: 98px; --delay: 1.75s;">story</span>
+                <span style="--sx: 0px; --sy: -108px; --mid: 86px; --drop: 168px; --end: 198px; --arc: -130px; --delay: 0s;">the</span>
+                <span style="--sx: 18px; --sy: -78px; --mid: 118px; --drop: 188px; --end: 202px; --arc: -104px; --delay: .45s;">sun</span>
+                <span style="--sx: -8px; --sy: -30px; --mid: 96px; --drop: 174px; --end: 196px; --arc: -82px; --delay: .9s;">is</span>
+                <span style="--sx: 20px; --sy: 18px; --mid: 128px; --drop: 196px; --end: 204px; --arc: -108px; --delay: 1.35s;">sweet</span>
+                <span style="--sx: -2px; --sy: 76px; --mid: 90px; --drop: 170px; --end: 198px; --arc: -86px; --delay: 1.8s;">moving</span>
+                <span style="--sx: 22px; --sy: 116px; --mid: 122px; --drop: 190px; --end: 202px; --arc: -122px; --delay: 2.25s;">story</span>
               </div>
               <div class="word-bag">
                 <div class="bag-mouth"></div>
                 <div class="bag-body">
                   <span>the</span>
                   <span>is</span>
-                  <span>sun</span>
                   <span>sweet</span>
-                  <span>story</span>
                   <span>moving</span>
+                  <span>story</span>
+                  <span>sun</span>
+                  <span>weather</span>
+                  <span>shining</span>
+                  <span>review</span>
+                  <span>film</span>
                 </div>
               </div>
               <div class="count-vector">
@@ -296,7 +300,7 @@
             <div class="copy-panel tfidf-copy">
               <p class="eyebrow">Technique 2</p>
               <h2>TF-IDF</h2>
-              <p class="lede">TF-IDF solves BoW's biggest problem: common words are penalized, distinctive words are rewarded.</p>
+              <p class="lede">TF-IDF solves BoW's biggest problem: <b>common words</b> are <i>penalized</i>, <b>distinctive words</b> are <i>rewarded</i>.</p>
             </div>
             <div class="tfidf-figure" data-tfidf-figure>
               <img src="assets/slide-media/tfidf-scale.png" alt="A scale showing common movie words losing weight and rare sentiment words gaining weight.">
@@ -330,12 +334,12 @@
         <section class="slide content-slide" data-title="Latent Semantic Analysis">
           <div class="lsa-layout">
             <div class="copy-panel">
-              <p class="eyebrow">LSA</p>
+              <p class="eyebrow">Technique 3</p>
               <h2>Latent Semantic Analysis</h2>
               <p class="lede">LSA solves a shared limitation of BoW and TF-IDF: both can treat related words as separate signals.</p>
               <div class="lsa-card">
                 <strong>Core idea</strong>
-                <span>Use SVD to reduce the TF-IDF matrix into fewer hidden dimensions called latent topics.</span>
+                <span>Use SVD to reduce the TF-IDF matrix into fewer hidden dimensions called <b>latent topics</b>.</span>
               </div>
             </div>
             <div class="lsa-visual" aria-label="Latent Semantic Analysis groups related words into hidden topics">
@@ -365,63 +369,91 @@
           </aside>
         </section>
 
-        <section class="slide content-slide" data-title="Linguistic Interpretation">
-          <div class="copy-panel wide">
-            <p class="eyebrow">For linguistics students</p>
-            <h2>What Sentiment Analysis Can and Cannot Hear</h2>
-            <div class="card-grid three">
-              <article class="mini-card positive-card">
-                <h3>It hears lexical cues</h3>
-                <p>Words such as excellent, awful, inspiring, boring, and disappointing can be strong polarity signals.</p>
-              </article>
-              <article class="mini-card cream-card">
-                <h3>It struggles with pragmatics</h3>
-                <p>Sarcasm, irony, indirect criticism, and cultural references often require context beyond word counts.</p>
-              </article>
-              <article class="mini-card negative-card">
-                <h3>It depends on domain</h3>
-                <p>"Unpredictable" may be positive for a thriller but negative for a delivery service.</p>
-              </article>
+        <section class="slide content-slide" data-title="Where LSA Fails">
+          <div class="failure-layout">
+            <div class="copy-panel">
+              <p class="eyebrow">After Technique 3</p>
+              <h2>Where LSA Fails</h2>
+              <p class="lede">Can LSA tell whether <mark>Apple</mark> means fruit or a technology company?</p>
+              <div class="apple-switch" aria-label="Apple meaning contrast">
+                <div>
+                  <strong>Apple</strong>
+                  <span>pie, orchard, sweet, recipe</span>
+                </div>
+                <div>
+                  <strong>Apple</strong>
+                  <span>iPhone, MacBook, stock, launch</span>
+                </div>
+              </div>
             </div>
-            <div class="callout">
-              <strong>Key point:</strong> A sentiment model is not a neutral reader. It reflects the data, labels, language variety, and assumptions used to train it.
+            <div class="failure-cards">
+              <article class="failure-card featured">
+                <strong>Core limitation</strong>
+                <span>LSA is mathematical, not conceptual: it maps statistical co-occurrence, but it does not understand intent, tone, or live context.</span>
+              </article>
+              <article class="failure-card">
+                <strong>Blind to word order</strong>
+                <span>"The dog bit the man" and "The man bit the dog" can look identical if the counts are the same.</span>
+              </article>
+              <article class="failure-card">
+                <strong>The polysemy trap</strong>
+                <span>Different senses of one word can collapse into a single average meaning.</span>
+              </article>
+              <article class="failure-card">
+                <strong>Deaf to pragmatics</strong>
+                <span>"Oh great, another error" may look positive because of one word, even when the tone is sarcastic.</span>
+              </article>
             </div>
           </div>
           <aside class="notes">
-            This slide keeps the audience grounded in linguistic expertise. Sentiment analysis is powerful, but it does not automatically understand context in the human sense. This creates an important role for linguists in data design, annotation, error analysis, and interpretation.
+            LSA is useful, but it is still based on statistical patterns, not real understanding. A good example is the word Apple. In a recipe, Apple probably means fruit. In a technology article, Apple probably means a company. LSA can capture broad associations, but it struggles with word order, multiple meanings, sarcasm, metaphor, and pragmatic tone.
           </aside>
         </section>
 
-        <section class="slide content-slide" data-title="Modern Techniques and Ethics">
-          <div class="copy-panel wide">
-            <p class="eyebrow">Beyond classical baselines</p>
-            <h2>Where the Field Goes Next</h2>
-            <div class="timeline">
-              <div>
-                <span>1</span>
-                <h3>Lexicon methods</h3>
-                <p>Use dictionaries of positive and negative words.</p>
-              </div>
-              <div>
-                <span>2</span>
-                <h3>Classical ML</h3>
-                <p>Use Bag-of-Words or TF-IDF with models such as logistic regression.</p>
-              </div>
-              <div>
-                <span>3</span>
-                <h3>Embeddings</h3>
-                <p>Represent words or sentences in dense numerical spaces.</p>
-              </div>
-              <div>
-                <span>4</span>
-                <h3>Transformers</h3>
-                <p>Use contextual language models that better handle meaning in context.</p>
+        <section class="slide content-slide" data-title="Deep Learning and Transformers">
+          <div class="transformer-layout">
+            <div class="copy-panel">
+              <p class="eyebrow">The solution</p>
+              <h2>Deep Learning & Transformers</h2>
+              <p class="lede"><b>Transformer models</b>, such as <b><i>BERT</i> and <i>GPT-4</i></b>. They read a word through the <i><mark>context</mark></i> instead of assigning it one fixed meaning.</p>
+              <div class="lsa-card">
+                <strong>Contextual evolution</strong>
+                <span>The model studies relationships among words in the whole sentence, so meaning changes with context.</span>
               </div>
             </div>
-            <p class="ethics-note">Ethical questions remain: privacy, bias, dialect fairness, annotation quality, and whether public emotion should be measured without consent.</p>
+            <div class="transformer-visual" aria-label="Transformer attention connects Apple to surrounding context">
+              <div class="sentence-ribbon">
+                <span>The</span>
+                <span>baker</span>
+                <span>served</span>
+                <strong>Apple</strong>
+                <span>pie</span>
+              </div>
+              <div class="attention-map">
+                <span class="context-node fruit">recipe</span>
+                <span class="context-node fruit">sweet</span>
+                <span class="center-node">Apple</span>
+                <span class="context-node tech">iPhone</span>
+                <span class="context-node tech">launch</span>
+              </div>
+              <div class="transformer-cards">
+                <article class="transformer-card">
+                  <strong>Attention</strong>
+                  <span>Every word is interpreted relative to nearby words.</span>
+                </article>
+                <article class="transformer-card">
+                  <strong>Dynamic meanings</strong>
+                  <span>Apple can mean fruit in a recipe and a company in a tech story.</span>
+                </article>
+                <article class="transformer-card">
+                  <strong>Pragmatics</strong>
+                  <span>Sequence, structure, and subtle cues help infer tone and intent.</span>
+                </article>
+              </div>
+            </div>
           </div>
           <aside class="notes">
-            Present the progression without overwhelming the audience. The field has moved from simple dictionaries to machine learning and contextual models. But better models do not remove ethical questions. A model can still be biased if its data or labels are biased.
+            Transformers are the next generation of NLP because they use context more powerfully. Their attention mechanism compares each word with the words around it. This helps the model distinguish Apple the fruit from Apple the company, and it gives the model a better chance of handling tone, sequence, and pragmatic meaning.
           </aside>
         </section>
 
